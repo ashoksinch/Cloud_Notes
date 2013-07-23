@@ -6,6 +6,7 @@ class UserController extends BaseController
 {
 	
 
+	//user create and store in datebase
 	public function post_create(){
 
 		$data = Input::get();
@@ -16,7 +17,7 @@ class UserController extends BaseController
 		$validator = Validator::make($data, $rules);
 		if($validator->fails())
 		{
-			return Response::json(array("errors" => $validator), 400);
+			return Response::json(array("errors" => $validator), 401);
 		}
 
 		$data["password"] = Hash::make($data["password"]);
@@ -31,6 +32,8 @@ class UserController extends BaseController
 
 	}
 
+
+	//user login
 	public function post_login(){
 		$data["username"] = Input::get("username");
 		$data["password"] = Input::get("password");
@@ -46,6 +49,8 @@ class UserController extends BaseController
 
 	}
 
+
+	//user logout
 	public function get_logout(){
 
 		Auth::logout();
