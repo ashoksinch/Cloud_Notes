@@ -6,6 +6,7 @@ class NoteController extends BaseController
 {
 	
 
+	//create note and save into database
 	public function post_create(){
 
 		$data = Input::get();
@@ -27,8 +28,7 @@ class NoteController extends BaseController
 		$note->fill($data);
 		$note->save();
 
-		//tag saving in database
-
+		//multiple tag saving in database
 		$tags = Input::get("tags");
 		$tags = explode(",", $tags);
 		
@@ -49,9 +49,6 @@ class NoteController extends BaseController
 		}
 		
 
-
-
-
 		if($note->id)
 			 return Response::json(compact("note"), 201 );
 		else
@@ -59,15 +56,17 @@ class NoteController extends BaseController
 
 	}
 
+
+	//show page of notes with ID
 	public function get_show($id){
 
 		$notes = Note::with("tags", "user")->find($id)->toArray();
-
 		return Response::json(compact("notes"), 200 );
 
 	}
 
 
+	//updata note with ID
 	public function put_update($id){
 
 		$data = Input::get();
@@ -88,6 +87,8 @@ class NoteController extends BaseController
 
 	}
 
+
+	//delete notes with ID
 	public function get_destroy($id){
 
 		$notes = Note::with("tags")->find($id)->toArray();
@@ -102,6 +103,7 @@ class NoteController extends BaseController
 	}
 
 
+	//Search note with title
 	public function post_search(){
 
 		$search = Input::get("search");
