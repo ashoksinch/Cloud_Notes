@@ -18,7 +18,7 @@ class NoteController extends BaseController
 		
 		if($validator->fails())
 		{
-			Response::json(array("errors" => $validator->messages), 400);
+			Response::json(array("errors" => $validator->messages()), 400);
 		}
 
 		//note saving in database
@@ -37,7 +37,9 @@ class NoteController extends BaseController
 			if( trim( strlen($t) ) > 0 ){
 				array_push($tagsToInsert, array(
 					"note_id" => $note->id,
-					"content" => trim($t)
+					"content" => trim($t),
+					"created_at" => date("Y-m-d H:i:s"),
+					"updated_at" => date("Y-m-d H:i:s")
 				));
 			}
 		}
@@ -77,6 +79,7 @@ class NoteController extends BaseController
 		foreach($tags as $tag)
 		{
 			$tag->content = Input::get("tags");
+			$tag->updated_at = date("Y-m-d H:i:s");
 			$tag->save();
 			return Response::json(compact("tag"), 200 );			
 		}
@@ -95,6 +98,19 @@ class NoteController extends BaseController
 		$notes->delete();
 
 		return Response::json(array(), 200 );
+
+	}
+
+
+	public function post_search(){
+
+		$search = Input::get("search");
+
+		$notes = Note::with("user", "tags")
+					->where("title", $search)
+					->get()
+					->toArray();
+		return Response::json(array(compact("notes")), 200);
 
 	}
 }
