@@ -6,6 +6,16 @@ class NoteController extends BaseController
 {
 	
 
+	public function get_index(){
+
+		$notes = Note::where("user_id", Auth::user()->id)
+						->get()
+						->toArray();
+		return Response::json(compact("notes"), 200);
+
+	}
+
+	//create note and save into database
 	public function post_create(){
 
 		$data = Input::get();
@@ -18,7 +28,7 @@ class NoteController extends BaseController
 		
 		if($validator->fails())
 		{
-			Response::json(array("errors" => $validator->messages), 400);
+			Response::json(array("errors" => $validator->messages()), 400);
 		}
 
 		//note saving in database
@@ -27,8 +37,7 @@ class NoteController extends BaseController
 		$note->fill($data);
 		$note->save();
 
-		//tag saving in database
-
+		//multiple tag saving in database
 		$tags = Input::get("tags");
 		$tags = explode(",", $tags);
 		
@@ -37,7 +46,9 @@ class NoteController extends BaseController
 			if( trim( strlen($t) ) > 0 ){
 				array_push($tagsToInsert, array(
 					"note_id" => $note->id,
-					"content" => trim($t)
+					"content" => trim($t),
+					"created_at" => date("Y-m-d H:i:s"),
+					"updated_at" => date("Y-m-d H:i:s")
 				));
 			}
 		}
@@ -47,9 +58,6 @@ class NoteController extends BaseController
 		}
 		
 
-
-
-
 		if($note->id)
 			 return Response::json(compact("note"), 201 );
 		else
@@ -57,15 +65,17 @@ class NoteController extends BaseController
 
 	}
 
+
+	//show page of notes with ID
 	public function get_show($id){
 
 		$notes = Note::with("tags", "user")->find($id)->toArray();
-
 		return Response::json(compact("notes"), 200 );
 
 	}
 
 
+	//updata note with ID
 	public function put_update($id){
 
 		$data = Input::get();
@@ -77,6 +87,7 @@ class NoteController extends BaseController
 		foreach($tags as $tag)
 		{
 			$tag->content = Input::get("tags");
+			$tag->updated_at = date("Y-m-d H:i:s");
 			$tag->save();
 			return Response::json(compact("tag"), 200 );			
 		}
@@ -85,6 +96,8 @@ class NoteController extends BaseController
 
 	}
 
+
+	//delete notes with ID
 	public function get_destroy($id){
 
 		$notes = Note::with("tags")->find($id)->toArray();
@@ -95,6 +108,20 @@ class NoteController extends BaseController
 		$notes->delete();
 
 		return Response::json(array(), 200 );
+
+	}
+
+
+	//Search note with title
+	public function post_search(){
+
+		$search = Input::get("search");
+
+		$notes = Note::with("user", "tags")
+					->where("title", $search)
+					->get()
+					->toArray();
+		return Response::json(array(compact("notes")), 200);
 
 	}
 }
