@@ -1,0 +1,14 @@
+<div class="tile notes" >
+    <div ng-repeat = "note in notes | filter: search" class="row">
+    	<div class="span5">
+    		<h6>{{ note.created_at }} by {{ note.author_id }} </h6>
+		    <h5>
+			    <a>{{ note.title }}</a>
+		    </h5>
+    	</div>
+    	<div class="span2">
+			<a class="btn btn-mini fui-new" ng-click="edit(note)"></a>
+			<a class="btn btn-mini fui-cross" ng-click="delete(note.id)"></a>
+    	</div>
+    </div>
+</div>

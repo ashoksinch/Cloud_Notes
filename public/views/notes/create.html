@@ -1,0 +1,18 @@
+<div class="alert alert-error" ng-show="isError">
+        Wrong Username or Password!!
+</div>
+<form ng-submit="create(note)">
+	<input type="text" placeholder="Title" class="span8" ng-model="note.title">
+	<textarea class="span7" rows="10" placeholder="content" ng-model="note.content"></textarea>
+	    	
+        <h3 class="demo-panel-title">Tags</h3>
+        <input name="tagsinput" id="tagsinput" class="tagsinput" value="Clean,Fresh,Modern,Unique" style="display: none;">
+        <div id="tagsinput_tagsinput" class="tagsinput " style="height: 100%;">
+
+        	<div class="tagsinput-add-container">
+        		<div class="tagsinput-add"></div>
+        		<input type="text" ng-model="tags">
+        	</div>
+        </div>
+	<button class="btn btn-large btn-primary">Save</button>
+</form>

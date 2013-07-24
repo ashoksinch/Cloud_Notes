@@ -1,0 +1,67 @@
+/* line 9, ../sass/style.scss */
+.container .row .span4 h2 {
+  margin-bottom: 40px;
+}
+/* line 12, ../sass/style.scss */
+.container .row .span4 li {
+  background: none;
+  cursor: default;
+}
+/* line 16, ../sass/style.scss */
+.container .row .span4 li a {
+  text-decoration: none;
+  color: white;
+}
+/* line 25, ../sass/style.scss */
+.container .row .span5 img {
+  margin-top: 150px;
+  width: 100px;
+  height: 100px;
+}
+/* line 33, ../sass/style.scss */
+.container .row .span7 form {
+  width: 320px;
+}
+/* line 37, ../sass/style.scss */
+.container .row .span7 .btn-forgot-password {
+  width: 200px;
+}
+/* line 43, ../sass/style.scss */
+.container .row .span8 form {
+  margin-top: 100px;
+}
+/* line 46, ../sass/style.scss */
+.container .row .span8 form button {
+  width: 150px;
+}
+/* line 54, ../sass/style.scss */
+.container .row .span8 .notes .row {
+  border-bottom: dotted 1px #3498DB;
+  margin-left: 0px;
+  margin-bottom: 10px;
+}
+/* line 60, ../sass/style.scss */
+.container .row .span8 .notes .row .span5 {
+  width: 460px;
+}
+/* line 64, ../sass/style.scss */
+.container .row .span8 .notes .row .span2 {
+  width: 90px;
+}
+/* line 71, ../sass/style.scss */
+.container .row .span8 .tile {
+  margin-top: 100px;
+}
+/* line 73, ../sass/style.scss */
+.container .row .span8 .tile .fui-new {
+  margin-right: 5px;
+}
+/* line 79, ../sass/style.scss */
+.container .row .span8 .notes {
+  text-align: left;
+}
+
+/* line 90, ../sass/style.scss */
+.login-page {
+  background: #1ABC9C;
+}
