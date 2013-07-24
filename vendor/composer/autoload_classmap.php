@@ -1539,6 +1539,7 @@ return array(
     'Symfony\\Component\\Translation\\Translator' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Translator.php',
     'Symfony\\Component\\Translation\\TranslatorInterface' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/TranslatorInterface.php',
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
+    'Tag' => $baseDir . '/app/models/Tag.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'User' => $baseDir . '/app/models/User.php',
     'UserController' => $baseDir . '/app/controllers/UserController.php',
