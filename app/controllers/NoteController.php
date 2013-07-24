@@ -8,7 +8,8 @@ class NoteController extends BaseController
 
 	public function get_index(){
 
-		$notes = Note::where("user_id", Auth::user()->id)
+		$notes = Note::with("user")
+						->where("user_id", Auth::user()->id)
 						->get()
 						->toArray();
 		return Response::json(compact("notes"), 200);
