@@ -6,6 +6,15 @@ class NoteController extends BaseController
 {
 	
 
+	public function get_index(){
+
+		$notes = Note::where("user_id", Auth::user()->id)
+						->get()
+						->toArray();
+		return Response::json(compact("notes"), 200);
+
+	}
+
 	//create note and save into database
 	public function post_create(){
 
