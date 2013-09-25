@@ -101,7 +101,7 @@ class NoteController extends BaseController
 	//delete notes with ID
 	public function get_destroy($id){
 
-		$notes = Note::with("tags")->find($id)->toArray();
+		$notes = Note::with("tags")->find($id);
 		foreach($notes->tags as $tag)
 		{
 			$tag->delete();

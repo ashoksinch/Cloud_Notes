@@ -1,6 +1,3 @@
-<div class="alert alert-error" ng-show="isError">
-        Wrong Username or Password!!
-</div>
 <form ng-submit="create(note)">
 	<input type="text" placeholder="Title" class="span8" ng-model="note.title">
 	<textarea class="span7" rows="10" placeholder="content" ng-model="note.content"></textarea>
@@ -14,5 +11,19 @@
         		<input type="text" ng-model="tags">
         	</div>
         </div>
-	<button class="btn btn-large btn-primary">Save</button>
+	<button class="btn btn-large btn-primary" on-click="$('#myModal').modal('show')">Save</button>
 </form>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Note Saved</h3>
+  </div>
+  <div class="modal-body">
+    <p>Note has been saved..</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Ok</button>
+  </div>
+</div>

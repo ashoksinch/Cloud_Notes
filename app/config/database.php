@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'cloud_notes',
+			'database'  => 'cloudnote',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

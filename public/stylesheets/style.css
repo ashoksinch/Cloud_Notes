@@ -34,34 +34,34 @@
 .container .row .span8 form button {
   width: 150px;
 }
-/* line 54, ../sass/style.scss */
-.container .row .span8 .notes .row {
+/* line 56, ../sass/style.scss */
+.container .row .span8 .notes .row .span5 {
+  width: 460px;
+}
+/* line 60, ../sass/style.scss */
+.container .row .span8 .notes .row .span2 {
+  width: 90px;
+}
+/* line 67, ../sass/style.scss */
+.container .row .span8 .tile {
+  margin-top: 100px;
+}
+/* line 69, ../sass/style.scss */
+.container .row .span8 .tile > div {
   border-bottom: dotted 1px #3498DB;
   margin-left: 0px;
   margin-bottom: 10px;
 }
-/* line 60, ../sass/style.scss */
-.container .row .span8 .notes .row .span5 {
-  width: 460px;
-}
-/* line 64, ../sass/style.scss */
-.container .row .span8 .notes .row .span2 {
-  width: 90px;
-}
-/* line 71, ../sass/style.scss */
-.container .row .span8 .tile {
-  margin-top: 100px;
-}
-/* line 73, ../sass/style.scss */
+/* line 76, ../sass/style.scss */
 .container .row .span8 .tile .fui-new {
   margin-right: 5px;
 }
-/* line 79, ../sass/style.scss */
+/* line 82, ../sass/style.scss */
 .container .row .span8 .notes {
   text-align: left;
 }
 
-/* line 90, ../sass/style.scss */
+/* line 96, ../sass/style.scss */
 .login-page {
   background: #1ABC9C;
 }

@@ -53,10 +53,6 @@ $margin: 20px;
 
 				.row{
 
-					border-bottom: dotted 1px #3498DB;
-					margin-left: 0px;
-					margin-bottom: 10px;
-
 					.span5{
 						width:460px;
 					}
@@ -69,6 +65,13 @@ $margin: 20px;
 
 			.tile
 			{
+
+				> div{
+					border-bottom: dotted 1px #3498DB;
+					margin-left: 0px;
+					margin-bottom: 10px;
+				}
+
 				margin-top: 100px;
 				.fui-new{
 					margin-right: 5px;
@@ -79,6 +82,9 @@ $margin: 20px;
 			.notes{
 				text-align: left;
 			}
+
+
+
 		}
 	}
 }

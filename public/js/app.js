@@ -28,30 +28,49 @@ cn.config(function ($routeProvider) {
 			controller: 'ForgotPasswordController',
 			templateUrl: '/views/useraccount/forgotpassword.html'	
 		})
+		.when('/notes/update/:id',
+		{
+			controller: 'NoteUpdateController',
+			templateUrl: '/views/notes/edit.html'	
+		})
+		.when('/notes/show/:id',
+		{
+			controller: 'NoteShowController',
+			templateUrl: '/views/notes/show.html'	
+		})
 		.otherwise({ redirectTo: '/login'});
 });
 
 
 cn.controller('NoteBrowse', function($scope, $http){
-
+	
 	$http
-		.get('/notes/show/')
+		.get('/views/notes/getAllNote.php')
 		.success(function(data){
-			$scope.notes = data.notes;
+			console.log(data);
+			$scope.notes = data;
 		});
 
-	$scope.edit = function(note.id){
-
-	};
-
-
 	$scope.delete = function(id){
+		$scope.loading = true;
 		$http
 			.get('/notes/destroy/' + id)
 			.success(function(){
-				console.log('Note Deleted');
+				for (var i = 0 ; i < $scope.notes.length; i++)
+				{
+					console.log($scope.notes[i])
+					if (id == $scope.notes[i].id)
+					{
+						
+						$scope.notes.splice(i,1);
+						break;
+					}
+				}
+				$scope.loading = false;
 			})
 	};
+
+
 
 });
 
@@ -132,6 +151,30 @@ cn.controller('ForgotPasswordController', function($scope){
 			alert('Email Not Exist');
 		}
 	};
+});
+
+cn.controller('NoteUpdateController', function($scope, $routeParams, $http, $location){
+	$http
+		.get('/notes/show/' + $routeParams.id)
+		.success(function(data){
+			$scope.note = data.notes;
+		});
+
+	$scope.update = function(note){
+		$http
+			.put('/notes/update/' + note.id,note)
+			.success(function(){
+				$location.path('/notes/browse')
+			});
+	};
+});
+
+cn.controller('NoteShowController', function($scope, $routeParams, $http, $location){
+	$http
+		.get('/notes/show/' + $routeParams.id)
+		.success(function(data){
+			$scope.note = data.notes;
+		});
 });
 
 

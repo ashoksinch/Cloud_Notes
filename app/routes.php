@@ -16,5 +16,5 @@ Route::controller("notes", "NoteController");
 
 Route::get('/', function()
 {
-	return View::make('index');
+	return View::make('default');
 });
